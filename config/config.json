@@ -2,7 +2,7 @@
   "development": {
     "username": "root",
     "password": "rootAWL69",
-    "database": "exampledb",
+    "database": "Appointa",
     "host": "localhost",
     "dialect": "mysql"
   },
