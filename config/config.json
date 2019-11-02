@@ -1,8 +1,8 @@
 {
   "development": {
     "username": "root",
-    "password": "rootAWL69",
-    "database": "exampledb",
+    "password": "$P1r1t88",
+    "database": "Appointa",
     "host": "localhost",
     "dialect": "mysql"
   },
