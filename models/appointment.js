@@ -72,12 +72,13 @@ module.exports = function(sequelize, DataTypes) {
       });
     };
 
-    // Appointment.associate = function(models) {
-    //   Appointment.belongsTo(models.Doctor, {
-    //     foreignKey: {
-    //       allowNull: false
-    //     }
-    //   });
-    // };
+    Appointment.associate = function(models) {
+      Appointment.belongsTo(models.Doctor, {
+        foreignKey: {
+          allowNull: false,
+            constraints: false
+        }
+      });
+    };
     return Appointment;
   };

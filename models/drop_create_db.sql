@@ -1,0 +1,3 @@
+DROP DATABASE Appointa;
+
+CREATE DATABASE Appointa;
