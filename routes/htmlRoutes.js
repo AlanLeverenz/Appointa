@@ -1,63 +1,35 @@
 var db = require("../models");
 
 module.exports = function(app) {
-  // Load index page
-  app.get("/", function(req, res) {
-    res.render("index", {
-      logoImg: "<img src= ",
-      
-    });
-  });
 
-  //Load sign up page
-  app.get("/signup", function(req, res) {
-    res.render("signup", {
-    });
-  });
+  // home / index
+  require('./indexRoute')(app);
 
-  //Load sign in page
-  app.get("/signin", function(req, res) {
-    res.render("signin", {
-    });
-  });
+  // sign up
+  require('./signupRoute')(app);
 
-  // Load dashboard page by id for that user/doctor
-  app.get("/:id/dashboard", function(req, res) {
-    db.Example.findOne({ where: { id: req.params.id } }).then(function(
-      dbExample
-    ) {
-      res.render("dashboard", {
-        example: dbExample
-      });
-    });
-  });
+  // sign in
+  require('./signinRoute')(app);
 
-  //Load profile page
-  app.get("/:id/profile", function(req, res) {
-    res.render("profile", {
-    });
-  });
+  // dashboard
+  require('./dashboardRoute')(app);
 
-  //Load appointment page
-  app.get("/:id/appointment", function(req, res) {
-    res.render("appointment", {
-    });
-  });
+  //profile
+  require('./profileRoute')(app);
 
-  //Load create appointment page
-  app.get("/:id/createappointment", function(req, res) {
-    res.render("createappointment", {
-    });
-  });
+  //appointment
+  require('./appointmentRoute')(app);
+
+
+  //create appointment
+  require('./createappointmentRoute')(app);
+
 
   //Load message page
-  app.get("/:id/message", function(req, res) {
-    res.render("message", {
-    });
-  });
+  require('./messageRoute')(app);
+
 
   // Render 404 page for any unmatched routes
-  app.get("*", function(req, res) {
-    res.render("404");
-  });
+  require('./404errorRoute')(app);
+
 };
