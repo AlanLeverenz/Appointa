@@ -3,7 +3,10 @@ var db = require("../models");
 module.exports = function(app) {
   // Load index page
   app.get("/", function(req, res) {
-    res.render("index", {});
+    res.render("index", {
+      logoImg: "<img src= ",
+      
+    });
   });
 
   //Load sign up page
