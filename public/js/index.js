@@ -1,99 +1,127 @@
 // Get references to page elements
-var $exampleText = $("#example-text");
-var $exampleDescription = $("#example-description");
+var $patientFirstName = $("#patient-firstname");
+var $patientLastName = $("#patient-lastname");
+var $visitPurpose = $("#visit-purpose");
+var $appointmentDate = $("#appointment-date");
+var $appointmentTime = $("#appointment-time");
+var $appointmentStatus = $("#appointment-status");
 var $submitBtn = $("#submit");
-var $exampleList = $("#example-list");
+var $appointmentList = $("#appointment-list");
+
+// DROPPED IN CODE FOR SELECTING FROM A LIST
+   // select category
+  //  $(".dropdown-menu a").click(function() {
+  //   // get category text and index from click event
+  //   catText = $(this).text();
+  //   catIndex = $(this).attr("id");
+  //   // write pulldown text and array index to #current-category and #user-select attribute
+  //   $("#current-category").html("<h4 id='user-select'>" + catText + "</h4>");
+  //   $("#user-select").attr("cat-index",catIndex);
+  //  });
+// END
 
 // The API object contains methods for each kind of request we'll make
 var API = {
-  saveExample: function(example) {
+  saveAppointment: function(appointment) {
     return $.ajax({
       headers: {
         "Content-Type": "application/json"
       },
       type: "POST",
-      url: "api/examples",
-      data: JSON.stringify(example)
+      url: "api/appointments",
+      data: JSON.stringify(appointment)
     });
   },
-  getExamples: function() {
+  getAppointments: function() {
     return $.ajax({
-      url: "api/examples",
+      url: "api/appointments",
       type: "GET"
     });
   },
-  deleteExample: function(id) {
+  confirmAppointment: function(id) {
     return $.ajax({
-      url: "api/examples/" + id,
-      type: "DELETE"
+      url: "api/appointments/confirm/" + id,
+      type: "UPDATE"
+    });
+  },
+  cancelAppointment: function(id) {
+    return $.ajax({
+      url: "api/appointments/cancel/" + id,
+      type: "UPDATE"
     });
   }
 };
 
-// refreshExamples gets new examples from the db and repopulates the list
-var refreshExamples = function() {
-  API.getExamples().then(function(data) {
-    var $examples = data.map(function(example) {
+// refreshAppointments gets new appointments from the db and repopulates the list
+var refreshAppointments = function() {
+  API.getAppointments().then(function(data) {
+    var $appointments = data.map(function(appointment) {
       var $a = $("<a>")
-        .text(example.text)
-        .attr("href", "/example/" + example.id);
+        .text(appointment.patient_request)
+        .attr("href", "/appointment/" + appointment.id);
 
       var $li = $("<li>")
         .attr({
           class: "list-group-item",
-          "data-id": example.id
+          "data-id": appointment.id
         })
         .append($a);
 
       var $button = $("<button>")
-        .addClass("btn btn-danger float-right delete")
-        .text("ｘ");
+        .addClass("btn btn-danger float-right confirm")
+        .text("Confirm");
 
-      $li.append($button);
+      $li.appointment($button);
 
       return $li;
     });
 
-    $exampleList.empty();
-    $exampleList.append($examples);
+    $appointmentList.empty();
+    $appointmentList.append($appointments);
   });
 };
 
-// handleFormSubmit is called whenever we submit a new example
-// Save the new example to the db and refresh the list
+// handleFormSubmit is called whenever we submit a new appointment
+// Save the new appointment to the db and refresh the list
 var handleFormSubmit = function(event) {
   event.preventDefault();
 
-  var example = {
-    text: $exampleText.val().trim(),
-    description: $exampleDescription.val().trim()
+  var appointment = {
+    firstname = $("#patient-firstname"),
+    lastname = $("#patient-lastname"),
+    patient_request = $("#visit-purpose"),
+    appointment_date = $("#appointment-date"),
+    appointment_time = $("#appointment-time"),
+    status = "New"
   };
 
-  if (!(example.text && example.description)) {
-    alert("You must enter an example text and description!");
-    return;
-  }
+  // if (!(appointment.text && appointment.description)) {
+  //   alert("You must enter an example text and description!");
+  //   return;
+  // }
 
-  API.saveExample(example).then(function() {
-    refreshExamples();
+  API.saveAppointment(appointment).then(function() {
+    console.log("Appointment saved.");
+    // Here is where the function for email notifications should be inserted.
+    // refreshAppointments();
   });
 
-  $exampleText.val("");
-  $exampleDescription.val("");
+  $appointmentText.val("");
+  $appointmentDescription.val("");
 };
 
-// handleDeleteBtnClick is called when an example's delete button is clicked
-// Remove the example from the db and refresh the list
-var handleDeleteBtnClick = function() {
-  var idToDelete = $(this)
+// handleConfirmBtnClick is called when an appointment's Confirm button is clicked
+// Update the appointment from the db and refresh the list
+var handleConfirmBtnClick = function() {
+  var idToConfirm = $(this)
     .parent()
     .attr("data-id");
 
-  API.deleteExample(idToDelete).then(function() {
-    refreshExamples();
+  API.confirmExample(idToConfirm).then(function() {
+    refreshAppointments();
   });
 };
 
 // Add event listeners to the submit and delete buttons
 $submitBtn.on("click", handleFormSubmit);
-$exampleList.on("click", ".delete", handleDeleteBtnClick);
+$appointmentList.on("click", ".confirm", handleConfirmBtnClick);

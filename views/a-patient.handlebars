@@ -1,0 +1,36 @@
+<div class="container">
+
+{{!-- navbar with home icon, etc. --}}
+    <div class="row navbar">
+        <div class="col-md-3">
+            <a href="/"><i class="fas fa-home" style="font-size:2rem"></i></a>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-3 text-center logo-control">
+            <img src="img/logopic.png" style="width:200px" alt="logo">
+        </div>
+    </div>
+
+{{!-- LABEL, DROPDOWN MENU TO SELECT PATIENT, SUBMIT TO NEXT... --}}
+
+<!-- Select patient -->
+<div class="container patient-doctor-dropdowns">
+    <div class="row">
+        <div class="col-md-3">
+            <h5>{{msg}}</h5></label>
+            <ul id="patient-list" class="list-group">
+                {{#each patients}}
+                    <li data-id="{{this.id}}" class="list-group-item">
+                        <a href="patient/{{this.id}}">{{this.firstname}} {{this.lastname}}</a><button class="btn btn-primary float-right dashboard"><i class="fas fa-arrow-alt-circle-right"></i></button>
+                    </li>
+                {{/each}}
+            </ul>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js">
+</script>
+<script src="/js/index.js"></script>

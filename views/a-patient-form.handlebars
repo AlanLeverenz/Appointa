@@ -1,0 +1,83 @@
+<div class="container">
+
+{{!-- navbar with home icon, etc. --}}
+    <div class="row navbar">
+        <div class="col-md-3">
+            <a href="/"><i class="fas fa-home" style="font-size:2rem"></i></a>
+        </div>
+    </div>
+{{!-- appoint image --}}
+    <div class="row">
+        <div class="col-md-3 text-center logo-control">
+            <img src="img/logopic.png" style="width:200px" alt="logo">
+        </div>
+    </div>
+</div>
+
+{{!-- appointment request form --}}
+
+<div class="container">
+    <form>
+        <div class="form-group">
+            <label for="patient-firstname">First name</label>
+            <input type="text" class="form-control" id="patient-firstname" placeholder="first name">
+        </div>
+
+        <div class="form-group">
+            <label for="patient-lastname">Last name</label>
+            <input type="text" class="form-control" id="patient-lastname" placeholder="last name">
+        </div>
+
+        <div class="form-group">
+            <label for="visit-purpose">Reason for your visit</label>
+            <input type="text" class="form-control" id="visit-purpose" placeholder="purpose for visit">
+        </div>
+
+        <div class="form-group">
+            <label for="select-doctor">Select a doctor</label>
+            <select class="form-control" id="select-doctor">
+                <option> -- Select a doctor -- </option>
+                <option id="1" name="Eric Vargas">Eric Vargas (Cardiologist)</option>
+                <option id="2" name="Ron Erlih">Ron Erlih (Brain Surgeon)</option>
+                <option id="3" name="Tony Ho">Tony Ho (Neurologist)</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="date">Date</label>
+            <input type="text" class="form-control" id="appt-date" placeholder="date">
+        </div>
+
+        <div class="form-group">
+            <label for="time">Time</label>
+            <input type="text" class="form-control" id="appt-time" placeholder="time">
+        </div>
+
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input type="text" class="form-control" id="patient-email" placeholder="email">
+        </div>
+
+        <div class="form-group">
+            <label for="phone">Phone</label>
+            <input type="text" class="form-control" id="patient-phone" placeholder="phone">
+        </div>
+
+        <div class="form-group">
+            <label for="insurance-provider">Insurance Provider</label>
+            <input type="text" class="form-control" id="insurance-provider" placeholder="insurance provider">
+        </div>
+
+        <div class="form-group">
+            <label for="group-id">Insurance Group ID</label>
+            <input type="text" class="form-control" id="group-id" placeholder="insurance group id">
+        </div>
+        
+        <button type="submit" action="POST" id="request-form" class="btn btn-primary">Submit</button>
+    </form>
+
+</div>
+
+<script src="/js/index.js"></script>
+
+

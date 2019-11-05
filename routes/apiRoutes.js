@@ -1,24 +1,24 @@
 var db = require("../models");
 
 module.exports = function(app) {
-  // Get all examples
-  app.get("/api/examples", function(req, res) {
-    db.Example.findAll({}).then(function(dbExamples) {
-      res.json(dbExamples);
+  // Get all appointments
+  app.get("/api/appointments", function(req, res) {
+    db.Appointment.findAll({}).then(function(dbAppointments) {
+      res.json(dbAppointments);
     });
   });
 
-  // Create a new example
-  app.post("/api/examples", function(req, res) {
-    db.Example.create(req.body).then(function(dbExample) {
-      res.json(dbExample);
+  // Create a new appointment
+  app.post("/api/appointments", function(req, res) {
+    db.Appointment.create(req.body).then(function(dbAppointment) {
+      res.json(dbAppointment);
     });
   });
 
-  // Delete an example by id
-  app.delete("/api/examples/:id", function(req, res) {
-    db.Example.destroy({ where: { id: req.params.id } }).then(function(dbExample) {
-      res.json(dbExample);
-    });
-  });
+  // Update an appointment by id
+  // app.update("/api/appointment/:id", function(req, res) {
+  //   db.Appointment.update({ where: { id: req.params.id } }).then(function(dbAppointment) {
+  //     res.json(dbAppointment);
+  //   });
+  // });
 };

@@ -1,10 +1,9 @@
 var db = require("../models");
 
-
 module.exports = function(app){
  //Load appointment page
- app.get("/:id/appointment", function(req, res) {
-    res.render("appointment", {
+ app.get("/patient-form/", function(req, res) {
+    res.render("a-patient-form", {
     });
   });
 };
