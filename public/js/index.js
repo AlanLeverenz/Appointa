@@ -1,12 +1,14 @@
 // Get references to page elements
 var $patientFirstName = $("#patient-firstname");
 var $patientLastName = $("#patient-lastname");
-var $visitPurpose = $("#visit-purpose");
-var $appointmentDate = $("#appointment-date");
-var $appointmentTime = $("#appointment-time");
-var $appointmentStatus = $("#appointment-status");
+var $patientEmail = $("#patient-email");
+// var $visitPurpose = $("#visit-purpose");
+// var $appointmentDate = $("#appointment-date");
+// var $appointmentTime = $("#appointment-time");
+// var $appointmentStatus = $("#appointment-status");
 var $submitBtn = $("#submit");
-var $appointmentList = $("#appointment-list");
+// var $appointmentList = $("#appointment-list");
+var $patientList = $("#patient-list");
 
 // DROPPED IN CODE FOR SELECTING FROM A LIST
    // select category
@@ -22,16 +24,26 @@ var $appointmentList = $("#appointment-list");
 
 // The API object contains methods for each kind of request we'll make
 var API = {
-  saveAppointment: function(appointment) {
+  savePatient: function(patient) {
     return $.ajax({
       headers: {
         "Content-Type": "application/json"
       },
       type: "POST",
-      url: "api/appointments",
-      data: JSON.stringify(appointment)
+      url: "api/patient",
+      data: JSON.stringify(patient)
     });
   },
+  // saveAppointment: function(appointment) {
+  //   return $.ajax({
+  //     headers: {
+  //       "Content-Type": "application/json"
+  //     },
+  //     type: "POST",
+  //     url: "api/appointments",
+  //     data: JSON.stringify(appointment)
+  //   });
+  // },
   getAppointments: function() {
     return $.ajax({
       url: "api/appointments",
@@ -52,76 +64,104 @@ var API = {
   }
 };
 
-// refreshAppointments gets new appointments from the db and repopulates the list
-var refreshAppointments = function() {
-  API.getAppointments().then(function(data) {
-    var $appointments = data.map(function(appointment) {
+// refresh patient list
+var refreshPatients = function() {
+  API.getPatients().then(function(data) {
+    var $patients = data.map(function(patient) {
       var $a = $("<a>")
-        .text(appointment.patient_request)
-        .attr("href", "/appointment/" + appointment.id);
+        .text(patient.firstname + ' ' + patient.lastname)
+        .attr("href", "/patient/" + patient.id);
 
       var $li = $("<li>")
         .attr({
           class: "list-group-item",
-          "data-id": appointment.id
+          "data-id": patient.id
         })
         .append($a);
 
       var $button = $("<button>")
-        .addClass("btn btn-danger float-right confirm")
-        .text("Confirm");
+        .addClass("btn btn-danger float-right delete")
+        .html('<i class="fas fa-trash-alt"></i>');
 
-      $li.appointment($button);
+      $li.patient($button);
 
       return $li;
     });
 
-    $appointmentList.empty();
-    $appointmentList.append($appointments);
+    $patientList.empty();
+    $patientList.append($patients);
   });
 };
+
+
+// refreshAppointments gets new appointments from the db and repopulates the list
+// var refreshAppointments = function() {
+//   API.getAppointments().then(function(data) {
+//     var $appointments = data.map(function(appointment) {
+//       var $a = $("<a>")
+//         .text(appointment.patient_request)
+//         .attr("href", "/appointment/" + appointment.id);
+
+//       var $li = $("<li>")
+//         .attr({
+//           class: "list-group-item",
+//           "data-id": appointment.id
+//         })
+//         .append($a);
+
+//       var $button = $("<button>")
+//         .addClass("btn btn-danger float-right confirm")
+//         .text("Confirm");
+
+//       $li.appointment($button);
+
+//       return $li;
+//     });
+
+//     $appointmentList.empty();
+//     $appointmentList.append($appointments);
+//   });
+// };
 
 // handleFormSubmit is called whenever we submit a new appointment
 // Save the new appointment to the db and refresh the list
 var handleFormSubmit = function(event) {
   event.preventDefault();
 
-  var appointment = {
-    firstname = $("#patient-firstname"),
-    lastname = $("#patient-lastname"),
-    patient_request = $("#visit-purpose"),
-    appointment_date = $("#appointment-date"),
-    appointment_time = $("#appointment-time"),
-    status = "New"
+  var patient = {
+    firstname: $patientFirstName.val().trim(),
+    lastname: $patientLastName.val().trim(),
+    email: $patientEmail.val().trim()
   };
 
-  // if (!(appointment.text && appointment.description)) {
-  //   alert("You must enter an example text and description!");
-  //   return;
-  // }
+  if (!(patient.firstname && patient.lastname && patient.email)) {
+    alert("You must enter your name and email! ... I'm not shouting.");
+    return;
+  }
 
-  API.saveAppointment(appointment).then(function() {
-    console.log("Appointment saved.");
+  API.savePatient(patient).then(function() {
+    console.log("Patient saved (we'll see).");
     // Here is where the function for email notifications should be inserted.
     // refreshAppointments();
   });
 
-  $appointmentText.val("");
-  $appointmentDescription.val("");
+  $patientFirstName.val("");
+  $patientLastName.val("");
+  $patientEmail.val("");
 };
 
 // handleConfirmBtnClick is called when an appointment's Confirm button is clicked
 // Update the appointment from the db and refresh the list
-var handleConfirmBtnClick = function() {
-  var idToConfirm = $(this)
-    .parent()
-    .attr("data-id");
+// var handleConfirmBtnClick = function() {
+//   var idToConfirm = $(this)
+//     .parent()
+//     .attr("data-id");
 
-  API.confirmExample(idToConfirm).then(function() {
-    refreshAppointments();
-  });
-};
+//   API.confirmExample(idToConfirm).then(function() {
+//     refreshAppointments();
+//   });
+// };
 
-// Add event listeners to the submit and delete buttons
-$submitBtn.on("click", handleFormSubmit);
-$appointmentList.on("click", ".confirm", handleConfirmBtnClick);
+// // Add event listeners to the submit and delete buttons
+// $submitBtn.on("click", handleFormSubmit);
+// $appointmentList.on("click", ".confirm", handleConfirmBtnClick);

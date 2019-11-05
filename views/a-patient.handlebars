@@ -8,22 +8,48 @@
     </div>
 
     <div class="row">
-        <div class="col-md-3 text-center logo-control">
-            <img src="img/logopic.png" style="width:200px" alt="logo">
+        <div class="col-md-8 text-center logo-control">
+            <img src="/img/logopic.png" style="width:200px" alt="logo">
         </div>
     </div>
 
-{{!-- LABEL, DROPDOWN MENU TO SELECT PATIENT, SUBMIT TO NEXT... --}}
+{{!-- Patient 'signup' form --}}
 
-<!-- Select patient -->
+    <div class="row mt-3">
+        <div class="col-md-8">
+            <form>
+                <div class="form-group">
+                    <label for="patient-firstname">First name</label>
+                    <input type="text" class="form-control" id="patient-firstname" placeholder="first name">
+                </div>
+
+                <div class="form-group">
+                    <label for="patient-lastname">Last name</label>
+                    <input type="text" class="form-control" id="patient-lastname" placeholder="last name">
+                </div>
+
+                <div class="form-group">
+                    <label for="visit-purpose">Email</label>
+                    <input type="text" class="form-control" id="patient-email" placeholder="email">
+                </div>
+                    <button id="submit" class="btn btn-primary float-right">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+    <br>
+    <br>
+
+{{!-- Patient list --}}
 <div class="container patient-doctor-dropdowns">
     <div class="row">
-        <div class="col-md-3">
+        <div class="col-md-8">
             <h5>{{msg}}</h5></label>
             <ul id="patient-list" class="list-group">
                 {{#each patients}}
                     <li data-id="{{this.id}}" class="list-group-item">
-                        <a href="patient/{{this.id}}">{{this.firstname}} {{this.lastname}}</a><button class="btn btn-primary float-right dashboard"><i class="fas fa-arrow-alt-circle-right"></i></button>
+                        <a href="patient/dashboard/{{this.id}}">{{this.firstname}} {{this.lastname}}</a><button class="btn btn-danger float-right delete"><i class="fas fa-trash-alt"></i></button>
                     </li>
                 {{/each}}
             </ul>

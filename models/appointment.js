@@ -30,7 +30,7 @@ module.exports = function(sequelize, DataTypes) {
           }
         },
         appointment_date: { 
-          type: DataTypes.DATE,
+          type: DataTypes.STRING,
           allowNull: false,
           validate: {
             len: [1]
@@ -43,7 +43,7 @@ module.exports = function(sequelize, DataTypes) {
             len: [1]
           }
         },
-        patient_request: { 
+        visit_purpose: { 
           type: DataTypes.STRING,
           allowNull: false,
           validate: {

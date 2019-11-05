@@ -21,7 +21,7 @@
             <ul id="appointment-list" class="list-group">
                 {{#each appointments}}
                     <option data-id="{{this.id}}" class="list-group-item">
-                        <a href="appointment/{{this.id}}">{{this.status}} - {{this.doctor}}</a><button class="btn btn-danger float-right cancel"><i class="far fa-window-close"></i></button>
+                        <a href="appointment/{{this.id}}">{{this.status}} - {{this.firstname}} {{this.lastname}}</a><button class="btn btn-primary float-right confirm"><i class="fas fa-check-square"></i></button>
                     </option>
                 {{/each}}
             </ul>
