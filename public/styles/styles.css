@@ -16,6 +16,11 @@ input {
   box-shadow: none;
 }
 
+.form-bg {
+  background-color: lightgrey;
+  padding: 30px;
+}
+
 
 .logo-control {
   margin-top: 50px;

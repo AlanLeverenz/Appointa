@@ -35,9 +35,6 @@ module.exports = function(sequelize, DataTypes) {
         password: {
             type: DataTypes.STRING,
         },
-        account_id: {
-            type: DataTypes.INTEGER,
-        },
         insurance_provider: {
             type: DataTypes.STRING,
         },
