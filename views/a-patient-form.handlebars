@@ -12,7 +12,9 @@
 
 
     <div class="container">
-        <section id="section-b" class="section-b-control">
+        <section id="section-b" class="form-style">
+
+            <h2 class="text-center form-header">Create your Appointment</h2>
 
             <form>
                 <div class="form col-xs-12">
@@ -29,7 +31,7 @@
 
                     <span><i class="fas fa-user icon-control"></i></span>
                     <input type="text" name="name" autocomplete="off" required id="patient-lastname">
-                    <label for="name" class="label-name"><span class="content-text">last name</span>
+                    <label for="name" class="label-name"><span class="content-text">Last name</span>
                     </label>
                 </div>
             </form>
@@ -65,44 +67,67 @@
                     </label>
                 </div>
             </form>
+
             <form>
                 <div class="form col-xs-12">
-                    <input placeholder="Select time" type="text" id="input_starttime" class="timepicker">
+                    <span><i class="fas fa-clock icon-control"></i></span>
+                    <input type="time" id="appt-time" class="timepicker">
                     <label for="time">Set time</label>
+
                 </div>
             </form>
 
-            <div class="form-group">
-                <label for="time">Time</label>
-                <input type="time" class="form-control" id="appt-time" placeholder="time">
-            </div>
+            <form>
+                <div class="form col-xs-12">
 
-            <div class="form-group">
-                <label for="email">Email</label>
-                <input type="text" class="form-control" id="patient-email" placeholder="email">
-            </div>
+                    <span><i class="fas fa-user icon-control"></i></span>
+                    <input type="text" name="name" autocomplete="off" required id="patient-email">
+                    <label for="name" class="label-name"><span class="content-text">Email</span>
+                    </label>
+                </div>
+            </form>
 
-            <div class="form-group">
-                <label for="phone">Phone</label>
-                <input type="text" class="form-control" id="patient-phone" placeholder="phone">
-            </div>
+            <form>
+                <div class="form col-xs-12">
 
-            <div class="form-group">
-                <label for="insurance-provider">Insurance Provider</label>
-                <input type="text" class="form-control" id="insurance-provider" placeholder="insurance provider">
-            </div>
+                    <span><i class="fas fa-user icon-control"></i></span>
+                    <input type="text" name="name" autocomplete="off" required id="patient-phone">
+                    <label for="name" class="label-name"><span class="content-text">phone</span>
+                    </label>
+                </div>
+            </form>
 
-            <div class="form-group">
-                <label for="group-id">Insurance Group ID</label>
-                <input type="text" class="form-control" id="group-id" placeholder="insurance group id">
-            </div>
+            <form>
+                <div class="form col-xs-12">
 
-            <button type="submit" action="POST" id="request-form" class="btn btn-primary">Submit</button>
+                    <span><i class="fas fa-user icon-control"></i></span>
+                    <input type="text" name="name" autocomplete="off" required id="insurance-provider">
+                    <label for="name" class="label-name"><span class="content-text">Insurance</span>
+                    </label>
+                </div>
+            </form>
+
+            <form>
+                <div class="form col-xs-12">
+
+                    <span><i class="fas fa-user icon-control"></i></span>
+                    <input type="text" name="name" autocomplete="off" required id="group-id">
+                    <label for="name" class="label-name"><span class="content-text">Insurance Group ID</span>
+                    </label>
+                </div>
+            </form>
+
+            <div class="row d-flex justify-content-center">
+                <button type="submit" action="POST" id="request-form"
+                    class="btn btn-primary float-right button button-control">Submit</button>
+            </div>
         </section>
     </div>
 </div>
 
-<script src="/js/index.js"></script>
-<!-- Compiled and minified CSS -->
+
 <!-- Compiled and minified JavaScript -->
+<script src="/js/index.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+<!-- Compiled and minified CSS -->

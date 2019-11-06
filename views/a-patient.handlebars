@@ -48,7 +48,9 @@
                 </div>
             </form>
             <br>
-            <button id="submit" class="btn btn-primary float-right">Submit</button>
+            <div class="col-xs-12 d-flex justify-content-center">
+                <button id="submit" class="btn btn-primary button button-control">Submit</button>
+            </div>
 
         </section>
     </div>
@@ -59,20 +61,25 @@
     {{!-- Patient list --}}
     <div class="container patient-doctor-dropdowns">
         <div class="row">
-            <div class="col-md-8">
-                <h5>{{msg}}</h5></label>
-                <ul id="patient-list" class="list-group">
-                    {{#each patients}}
-                    <li data-id="{{this.id}}" class="list-group-item data-list">
-                        <a href="patient/dashboard/{{this.id}}">{{this.firstname}} {{this.lastname}}</a><button
-                            class="btn btn-danger float-right delete"><i class="fas fa-trash-alt"></i></button>
-                    </li>
-                    {{/each}}
-                </ul>
+            <div class="col-md-12 d-flex justify-content-center">
+                <h3 class="title-control text-center "> {{msg}}</h3>
             </div>
         </div>
-    </div>
+        <ul id="patient-list" class="list-group">
+            {{#each patients}}
+            <a href="patient/dashboard/{{this.id}}">
+                <li data-id="{{this.id}}" class="list-group-item data-list">
 
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js">
-    </script>
-    <script src="/js/index.js"></script>
+                    {{this.firstname}} {{this.lastname}}
+            </a>
+            <button class="btn btn-danger float-right button button-control"><i class="fas fa-trash-alt"></i></button>
+            </li>
+            {{/each}}
+        </ul>
+    </div>
+</div>
+</div>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js">
+</script>
+<script src="/js/index.js"></script>

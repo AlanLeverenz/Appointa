@@ -164,12 +164,3 @@ var handleFormSubmit = function(event) {
 // // Add event listeners to the submit and delete buttons
 // $submitBtn.on("click", handleFormSubmit);
 // $appointmentList.on("click", ".confirm", handleConfirmBtnClick);
-var timer = document.querySelector('.timepicker');
-M.Timepicker.init(timer, {
-  showClearBtn:true,
-  i18n:{
-    clear: 'remove',
-    cancel: 'No',
-    done: 'yes'
-  }
-});
