@@ -1,83 +1,108 @@
 <div class="container">
 
-{{!-- navbar with home icon, etc. --}}
-    <div class="row navbar">
-        <div class="col-md-3">
-            <a href="/"><i class="fas fa-home" style="font-size:2rem"></i></a>
-        </div>
-    </div>
-{{!-- appointa image --}}
+    {{!-- navbar with home icon, etc. --}}
+    {{!-- appointa image --}}
     <div class="row">
-        <div class="col-md-12 text-center logo-control">
-            <img src="/img/logopic.png" style="width:200px" alt="logo">
+        <div class="col-md-12 text-center">
+            <img src="/img/logopic.png" alt="logo">
         </div>
     </div>
-</div>
 
-{{!-- appointment request form --}}
+    {{!-- appointment request form --}}
 
-<div class="container request-form mt-3">
-    <form>
-        <div class="form-group">
-            <label for="patient-firstname">First name</label>
-            <input type="text" class="form-control" id="patient-firstname" placeholder="first name">
-        </div>
 
-        <div class="form-group">
-            <label for="patient-lastname">Last name</label>
-            <input type="text" class="form-control" id="patient-lastname" placeholder="last name">
-        </div>
+    <div class="container">
+        <section id="section-b" class="section-b-control">
 
-        <div class="form-group">
-            <label for="visit-purpose">Reason for your visit</label>
-            <input type="text" class="form-control" id="visit-purpose" placeholder="purpose for visit">
-        </div>
+            <form>
+                <div class="form col-xs-12">
 
-        <div class="form-group">
-            <label for="select-doctor">Select a doctor</label>
-            <select class="form-control" id="select-doctor">
-                <option> -- Select a doctor -- </option>
-                <option id="1" name="Eric Vargas">Eric Vargas (Cardiologist)</option>
-                <option id="2" name="Ron Erlih">Ron Erlih (Brain Surgeon)</option>
-                <option id="3" name="Tony Ho">Tony Ho (Neurologist)</option>
-            </select>
-        </div>
+                    <span><i class="fas fa-user icon-control"></i></span>
+                    <input type="text" name="name" autocomplete="off" required id="patient-firstname">
+                    <label for="name" class="label-name"><span class="content-text">First Name</span>
+                    </label>
+                </div>
+            </form>
 
-        <div class="form-group">
-            <label for="date">Date</label>
-            <input type="text" class="form-control" id="appt-date" placeholder="date">
-        </div>
+            <form>
+                <div class="form col-xs-12">
 
-        <div class="form-group">
-            <label for="time">Time</label>
-            <input type="text" class="form-control" id="appt-time" placeholder="time">
-        </div>
+                    <span><i class="fas fa-user icon-control"></i></span>
+                    <input type="text" name="name" autocomplete="off" required id="patient-lastname">
+                    <label for="name" class="label-name"><span class="content-text">last name</span>
+                    </label>
+                </div>
+            </form>
 
-        <div class="form-group">
-            <label for="email">Email</label>
-            <input type="text" class="form-control" id="patient-email" placeholder="email">
-        </div>
+            <form>
+                <div class="form col-xs-12">
 
-        <div class="form-group">
-            <label for="phone">Phone</label>
-            <input type="text" class="form-control" id="patient-phone" placeholder="phone">
-        </div>
+                    <span><i class="fas fa-user icon-control"></i></span>
+                    <input type="text" name="name" autocomplete="off" required id="visit-purpose">
+                    <label for="name" class="label-name"><span class="content-text">Reason for your visit</span>
+                    </label>
+                </div>
+            </form>
 
-        <div class="form-group">
-            <label for="insurance-provider">Insurance Provider</label>
-            <input type="text" class="form-control" id="insurance-provider" placeholder="insurance provider">
-        </div>
 
-        <div class="form-group">
-            <label for="group-id">Insurance Group ID</label>
-            <input type="text" class="form-control" id="group-id" placeholder="insurance group id">
-        </div>
-        
-        <button type="submit" action="POST" id="request-form" class="btn btn-primary">Submit</button>
-    </form>
+            <div class="form col-xs-12">
 
+                <select class="form-control" id="select-doctor">
+                    <label for="select-doctor">Select a doctor</label>
+                    <option>Select a doctor</option>
+                    <option id="1" name="Eric Vargas">Eric Vargas (Cardiologist)</option>
+                    <option id="2" name="Ron Erlih">Ron Erlih (Brain Surgeon)</option>
+                    <option id="3" name="Tony Ho">Tony Ho (Neurologist)</option>
+                </select>
+            </div>
+
+            <form>
+                <div class="form col-xs-12">
+
+                    <span><i class="fas fa-user icon-control"></i></span>
+                    <input type="date" name="name" autocomplete="off" required id="appt-date">
+                    <label for="name" class="label-name"><span class="content-text"></span>
+                    </label>
+                </div>
+            </form>
+            <form>
+                <div class="form col-xs-12">
+                    <input placeholder="Select time" type="text" id="input_starttime" class="timepicker">
+                    <label for="time">Set time</label>
+                </div>
+            </form>
+
+            <div class="form-group">
+                <label for="time">Time</label>
+                <input type="time" class="form-control" id="appt-time" placeholder="time">
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="text" class="form-control" id="patient-email" placeholder="email">
+            </div>
+
+            <div class="form-group">
+                <label for="phone">Phone</label>
+                <input type="text" class="form-control" id="patient-phone" placeholder="phone">
+            </div>
+
+            <div class="form-group">
+                <label for="insurance-provider">Insurance Provider</label>
+                <input type="text" class="form-control" id="insurance-provider" placeholder="insurance provider">
+            </div>
+
+            <div class="form-group">
+                <label for="group-id">Insurance Group ID</label>
+                <input type="text" class="form-control" id="group-id" placeholder="insurance group id">
+            </div>
+
+            <button type="submit" action="POST" id="request-form" class="btn btn-primary">Submit</button>
+        </section>
+    </div>
 </div>
 
 <script src="/js/index.js"></script>
-
-
+<!-- Compiled and minified CSS -->
+<!-- Compiled and minified JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>

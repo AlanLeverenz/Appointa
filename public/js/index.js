@@ -11,15 +11,15 @@ var $submitBtn = $("#submit");
 var $patientList = $("#patient-list");
 
 // DROPPED IN CODE FOR SELECTING FROM A LIST
-   // select category
-  //  $(".dropdown-menu a").click(function() {
-  //   // get category text and index from click event
-  //   catText = $(this).text();
-  //   catIndex = $(this).attr("id");
-  //   // write pulldown text and array index to #current-category and #user-select attribute
-  //   $("#current-category").html("<h4 id='user-select'>" + catText + "</h4>");
-  //   $("#user-select").attr("cat-index",catIndex);
-  //  });
+// select category
+//  $(".dropdown-menu a").click(function() {
+//   // get category text and index from click event
+//   catText = $(this).text();
+//   catIndex = $(this).attr("id");
+//   // write pulldown text and array index to #current-category and #user-select attribute
+//   $("#current-category").html("<h4 id='user-select'>" + catText + "</h4>");
+//   $("#user-select").attr("cat-index",catIndex);
+//  });
 // END
 
 // The API object contains methods for each kind of request we'll make
@@ -69,7 +69,7 @@ var refreshPatients = function() {
   API.getPatients().then(function(data) {
     var $patients = data.map(function(patient) {
       var $a = $("<a>")
-        .text(patient.firstname + ' ' + patient.lastname)
+        .text(patient.firstname + " " + patient.lastname)
         .attr("href", "/patient/" + patient.id);
 
       var $li = $("<li>")
@@ -92,7 +92,6 @@ var refreshPatients = function() {
     $patientList.append($patients);
   });
 };
-
 
 // refreshAppointments gets new appointments from the db and repopulates the list
 // var refreshAppointments = function() {
@@ -165,3 +164,12 @@ var handleFormSubmit = function(event) {
 // // Add event listeners to the submit and delete buttons
 // $submitBtn.on("click", handleFormSubmit);
 // $appointmentList.on("click", ".confirm", handleConfirmBtnClick);
+var timer = document.querySelector('.timepicker');
+M.Timepicker.init(timer, {
+  showClearBtn:true,
+  i18n:{
+    clear: 'remove',
+    cancel: 'No',
+    done: 'yes'
+  }
+});

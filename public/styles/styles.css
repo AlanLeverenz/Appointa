@@ -2,11 +2,22 @@
 
 body {
   overflow-x: hidden; 
-  /* background: url("/img/1.jpg"); */
-  background-repeat: no-repeat;
-  background-size: cover;
+  background-color: #edeae5;
 }
 
+p {
+  color: black;
+}
+
+.data-list {
+  background: url('../img/2_files/2.jpg');
+  padding: 10px;
+}
+
+.data-list:hover {
+  background: url("../img/2_files/3.jpg");
+
+}
 
 li {
   list-style-type: none;

@@ -1,34 +1,31 @@
 <div class="container">
 
-{{!-- navbar with home icon, etc. --}}
-    <div class="row navbar">
-        <div class="col-md-3">
-            <a href="/"><i class="fas fa-home" style="font-size:2rem"></i></a>
+    {{!-- navbar with home icon, etc. --}}
+
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <img src="/img/logopic.png" alt="logo">
         </div>
     </div>
 
-    <div class="row">
-        <div class="col-md-10 text-center logo-control">
-            <img src="/img/logopic.png" style="width:200px" alt="logo">
-        </div>
-    </div>
 
-<!-- List appointments -->
-<div class="container appt-list mt-3">
-    <div class="row">
-        <div class="col-md-10">
-            <h5>Appointment List</h5></label>
-            <ul id="appointment-list" class="list-group">
-                {{#each appointments}}
+    <!-- List appointments -->
+    <div class="container appt-list mt-3">
+        <div class="row">
+            <div class="col-md-10">
+                <h5>Appointment List</h5></label>
+                <ul id="appointment-list" class="list-group">
+                    {{#each appointments}}
                     <option data-id="{{this.id}}" class="list-group-item">
-                        <a href="appointment/{{this.id}}">{{this.status}} - {{this.doctor}}</a><button class="btn btn-danger float-right cancel"><i class="far fa-window-close"></i></button>
+                        <a href="appointment/{{this.id}}">{{this.status}} - {{this.doctor}}</a><button
+                            class="btn btn-danger float-right cancel"><i class="far fa-window-close"></i></button>
                     </option>
-                {{/each}}
-            </ul>
+                    {{/each}}
+                </ul>
+            </div>
         </div>
     </div>
-</div>
 
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js">
-</script>
-<script src="/js/index.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js">
+    </script>
+    <script src="/js/index.js"></script>
