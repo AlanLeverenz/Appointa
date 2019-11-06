@@ -65,20 +65,22 @@
                 <h3 class="title-control text-center "> {{msg}}</h3>
             </div>
         </div>
-        <ul id="patient-list" class="list-group">
+        <ul id="patient-list" class="list-group section-b-control">
             {{#each patients}}
             <a href="patient/dashboard/{{this.id}}">
                 <li data-id="{{this.id}}" class="list-group-item data-list">
 
-                    {{this.firstname}} {{this.lastname}}
+                    <button class="button button-control"> {{this.firstname}} {{this.lastname}}</button>
+
             </a>
             <button class="btn btn-danger float-right button button-control"><i class="fas fa-trash-alt"></i></button>
             </li>
             {{/each}}
         </ul>
     </div>
+    
 </div>
-</div>
+
 
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js">
 </script>

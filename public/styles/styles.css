@@ -2,7 +2,7 @@
 
 body {
   overflow-x: hidden;
-  background-color: #edeae5;
+  background: url('../img/2_files/4.jpg')
 }
 
 p {
@@ -10,9 +10,7 @@ p {
 }
 
 .data-list {
-  background: #bdc3c7;
-  padding: 10px;
-  color: black;
+  background: none;
   transition: 0.8s;
 }
 
@@ -68,9 +66,11 @@ a:hover {
 
 .section-b-control {
   margin-top: 30px;
-  background-color: #bdc3c7;
+  background: #ecf0f18e;
+  border: 1px solid black;
   padding: 50px;
   height: 500px;
+  
 }
 
 .form-style {
@@ -107,8 +107,14 @@ a:hover {
 
 /* nav style */
 
-.nav-control a {
-  color: #3961CF;
+.nav-control {
+  color: #fff;
+  /* transition: 0.8s; */
+}
+
+.nav-cntrol:hover {
+  color: rgb(153, 152, 152);
+  /* transition: 0.8s; */
 }
 
 /* end of nav style */
