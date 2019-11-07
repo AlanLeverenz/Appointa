@@ -1,24 +1,40 @@
 var db = require("../models");
 
 module.exports = function(app) {
-  // Get all examples
-  app.get("/api/examples", function(req, res) {
-    db.Example.findAll({}).then(function(dbExamples) {
-      res.json(dbExamples);
+  // Get all appointments
+  app.get("/api/appointments", function(req, res) {
+    db.Appointment.findAll({}).then(function(dbAppointments) {
+      res.json(dbAppointments);
     });
   });
 
-  // Create a new example
-  app.post("/api/examples", function(req, res) {
-    db.Example.create(req.body).then(function(dbExample) {
-      res.json(dbExample);
+  // Create a new appointment
+  app.post("/patient/api/appointments", function(req, res) {
+    console.log(req.body)
+    db.Appointment.create(req.body).then(function(dbAppointment) {
+      res.json(dbAppointment);
     });
   });
 
-  // Delete an example by id
-  app.delete("/api/examples/:id", function(req, res) {
-    db.Example.destroy({ where: { id: req.params.id } }).then(function(dbExample) {
-      res.json(dbExample);
+  // Get all patients
+  app.get("/api/patients", function(req, res) {
+    db.Patient.findAll({}).then(function(dbPatients) {
+      res.json(dbPatients);
+    });
+  });
+
+  // Create a new patient
+  app.post("/api/patients", function(req, res) {
+    console.log(req.body)
+    db.Patient.create(req.body).then(function(dbPatient) {
+      res.json(dbPatient);
+    });
+  });
+
+  // Delete a patient by id
+  app.delete("/api/patient/:id", function(req, res) {
+    db.Patient.destroy({ where: { id: req.params.id } }).then(function(dbPatient) {
+      res.json(dbPatient);
     });
   });
 };

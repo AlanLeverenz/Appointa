@@ -4,6 +4,12 @@ var exphbs = require("express-handlebars");
 
 var db = require("./models");
 
+// if (process.argv[2] === 'seed') {
+// require ("./cjs");
+//}; 
+// require the db, require sequelize, 
+// db.[tablename].create({column : value});
+
 var app = express();
 var PORT = process.env.PORT || 3000;
 
@@ -24,6 +30,8 @@ app.set("view engine", "handlebars");
 // Routes
 require("./routes/apiRoutes")(app);
 require("./routes/htmlRoutes")(app);
+// require("./routes/passport")(app);
+// require("./routes/signup")(app);
 
 var syncOptions = { force: false };
 
@@ -33,7 +41,7 @@ if (process.env.NODE_ENV === "test") {
   syncOptions.force = true;
 }
 
-// Starting the server, syncing our models ------------------------------------/
+// Starting the server, syncing our models 
 db.sequelize.sync(syncOptions).then(function() {
   app.listen(PORT, function() {
     console.log(

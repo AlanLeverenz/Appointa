@@ -1,0 +1,33 @@
+<div class="container">
+
+    {{!-- navbar with home icon, etc. --}}
+
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <img src="/img/logopic.png" alt="logo">
+        </div>
+    </div>
+
+    <!-- List appointments -->
+    <div class="container appt-list mt-3">
+        <div class="row">
+            <div class="col-md-12 d-flex justify-content-center">
+                <h3 class="title-control text-center ">Appointment List</h3>
+            </div>
+        </div>
+        <ul id="appointment-list" class="list-group">
+            {{#each appointments}}
+            <option data-id="{{this.id}}" class="list-group-item">
+                <a href="appointment/{{this.id}}">{{this.status}} - {{this.firstname}}
+                    {{this.lastname}}</a><button class="btn btn-primary float-right confirm"><i
+                        class="fas fa-check-square"></i></button>
+            </option>
+            {{/each}}
+        </ul>
+    </div>
+</div>
+</div>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js">
+</script>
+<script src="/js/index.js"></script>

@@ -1,0 +1,133 @@
+<div class="container">
+
+    {{!-- navbar with home icon, etc. --}}
+    {{!-- appointa image --}}
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <img src="/img/logopic.png" alt="logo">
+        </div>
+    </div>
+
+    {{!-- appointment request form --}}
+
+
+    <div class="container">
+        <section id="section-b" class="form-style">
+
+            <h2 class="text-center form-header">Create your Appointment</h2>
+
+            <form>
+                <div class="form col-xs-12">
+
+                    <span><i class="fas fa-user icon-control"></i></span>
+                    <input type="text" name="name" autocomplete="off" required id="appt-firstname">
+                    <label for="name" class="label-name"><span class="content-text">First Name</span>
+                    </label>
+                </div>
+            </form>
+
+            <form>
+                <div class="form col-xs-12">
+
+                    <span><i class="fas fa-user icon-control"></i></span>
+                    <input type="text" name="name" autocomplete="off" required id="appt-lastname">
+                    <label for="name" class="label-name"><span class="content-text">Last name</span>
+                    </label>
+                </div>
+            </form>
+
+            <form>
+                <div class="form col-xs-12">
+
+                    <span><i class="fas fa-user icon-control"></i></span>
+                    <input type="text" name="name" autocomplete="off" required id="visit-purpose">
+                    <label for="name" class="label-name"><span class="content-text">Reason for your visit</span>
+                    </label>
+                </div>
+            </form>
+
+
+            <div class="form col-xs-12">
+
+                <select class="form-control" id="select-doctor">
+                    <label for="select-doctor">Select a doctor</label>
+                    <option>Select a doctor</option>
+                    <option id="1" name="Eric Vargas">Eric Vargas (Cardiologist)</option>
+                    <option id="2" name="Ron Erlih">Ron Erlih (Brain Surgeon)</option>
+                    <option id="3" name="Tony Ho">Tony Ho (Neurologist)</option>
+                </select>
+            </div>
+
+            <form>
+                <div class="form col-xs-12">
+
+                    <span><i class="fas fa-user icon-control"></i></span>
+                    <input type="date" name="name" autocomplete="off" required id="appt-date">
+                    <label for="name" class="label-name"><span class="content-text"></span>
+                    </label>
+                </div>
+            </form>
+
+            <form>
+                <div class="form col-xs-12">
+                    <span><i class="fas fa-clock icon-control"></i></span>
+                    <input type="time" id="appt-time" class="timepicker">
+                    <label for="time">Set time</label>
+
+                </div>
+            </form>
+
+            <form>
+                <div class="form col-xs-12">
+
+                    <span><i class="fas fa-user icon-control"></i></span>
+                    <input type="text" name="name" autocomplete="off" required id="appt-email">
+                    <label for="name" class="label-name"><span class="content-text">Email</span>
+                    </label>
+                </div>
+            </form>
+
+            <form>
+                <div class="form col-xs-12">
+
+                    <span><i class="fas fa-user icon-control"></i></span>
+                    <input type="text" name="name" autocomplete="off" required id="appt-phone">
+                    <label for="name" class="label-name"><span class="content-text">phone</span>
+                    </label>
+                </div>
+            </form>
+
+            <form>
+                <div class="form col-xs-12">
+
+                    <span><i class="fas fa-user icon-control"></i></span>
+                    <input type="text" name="name" autocomplete="off" required id="insurance-provider">
+                    <label for="name" class="label-name"><span class="content-text">Insurance</span>
+                    </label>
+                </div>
+            </form>
+
+            <form>
+                <div class="form col-xs-12">
+
+                    <span><i class="fas fa-user icon-control"></i></span>
+                    <input type="text" name="name" autocomplete="off" required id="group-id">
+                    <label for="name" class="label-name"><span class="content-text">Insurance Group ID</span>
+                    </label>
+                </div>
+            </form>
+
+            <div class="row d-flex justify-content-center">
+                <button type="submit" action="POST" id="submit-appt"
+                    class="btn btn-primary float-right button button-control">Submit</button>
+            </div>
+        </section>
+    </div>
+</div>
+
+
+<!-- Compiled and minified JavaScript -->
+<script src="/js/index.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+<!-- Compiled and minified CSS -->

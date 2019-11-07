@@ -1,0 +1,87 @@
+<div class="container">
+
+    {{!-- navbar with home icon, etc. --}}
+
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <img src="/img/logopic.png" alt="logo">
+        </div>
+    </div>
+
+    {{!-- Patient 'signup' form --}}
+
+
+
+
+    {{!-- -------------------------------------- --}}
+
+    <div class="container">
+        <section id="section-b" class="section-b-control">
+            <!-- <div class="row"> -->
+            <form>
+                <div class="form col-xs-12">
+
+                    <span><i class="fas fa-user icon-control"></i></span>
+                    <input type="text" name="name" autocomplete="off" required id="patient-firstname">
+                    <label for="name" class="label-name"><span class="content-text">First Name</span>
+                    </label>
+                </div>
+            </form>
+
+            <form>
+                <div class="form col-xs-12">
+
+                    <span><i class="fas fa-user icon-control"></i></span>
+                    <input type="text" name="name" autocomplete="off" required id="patient-lastname">
+                    <label for="name" class="label-name"><span class="content-text">Last name</span>
+                    </label>
+                </div>
+            </form>
+
+            <form>
+                <div class="form col-xs-12">
+
+                    <span><i class="fas fa-envelope icon-control"></i></span>
+                    <input type="text" name="name" autocomplete="off" required id="patient-email">
+                    <label for="name" class="label-name"><span class="content-text">email</span>
+                    </label>
+                </div>
+            </form>
+            <br>
+            <div class="col-xs-12 d-flex justify-content-center">
+                <button id="submit-patient" class="btn btn-primary button button-control">Submit</button>
+            </div>
+
+        </section>
+    </div>
+
+    <br>
+    <br>
+
+    {{!-- Patient list --}}
+    <div class="container patient-doctor-dropdowns">
+        <div class="row">
+            <div class="col-md-12 d-flex justify-content-center">
+                <h3 class="title-control text-center "> {{msg}}</h3>
+            </div>
+        </div>
+        <ul id="patient-list" class="list-group section-b-control">
+            {{#each patients}}
+            <a href="patient/dashboard/{{this.id}}">
+                <li data-id="{{this.id}}" class="list-group-item data-list">
+
+                    <button class="button button-control"> {{this.firstname}} {{this.lastname}}</button>
+
+            </a>
+            <button class="btn btn-danger float-right button button-control delete"><i class="fas fa-trash-alt"></i></button>
+            </li>
+            {{/each}}
+        </ul>
+    </div>
+    
+</div>
+
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js">
+</script>
+<script src="/js/index.js"></script>

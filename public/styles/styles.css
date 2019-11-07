@@ -1,3 +1,284 @@
-.list-group-item {
-  line-height: 2.5;
+/* body css */
+
+body {
+  overflow-x: hidden;
+  background: url('../img/2_files/4.jpg')
 }
+
+p {
+  color: black;
+}
+
+.data-list {
+  background: none;
+  transition: 0.8s;
+}
+
+.patient-doctor-dropdowns {
+  color: black;
+}
+
+.data-list:hover {
+  background: #ecf0f1;
+}
+
+li {
+  list-style-type: none;
+}
+
+input {
+  box-shadow: none;
+}
+
+.logo-control {
+  margin-top: 50px;
+}
+
+.title-control {
+  width: 400px;
+  margin-top: 100px;
+  margin-bottom: 25px;
+  border-bottom: 1px solid black;
+  padding: 10px;
+  font-size: 30px;
+}
+
+/* unvisited link */
+
+a:link {
+  color: white;
+  text-decoration: none;
+}
+
+/* visited link */
+
+a:visited {
+  color: white;
+}
+
+/* mouse over link */
+
+a:hover {
+  color: white;
+}
+
+/* section b */
+
+.section-b-control {
+  margin-top: 30px;
+  background: #ecf0f18e;
+  border: 1px solid black;
+  padding: 50px;
+  height: 500px;
+  
+}
+
+.form-style {
+  background: #ecf0f1;
+  padding: 50px;
+  height: 100%;
+}
+
+.form-choice-control {
+  height: 100px;
+  width: 100%;
+  padding: 10px;
+  background: black;  
+}
+
+.form-header {
+  margin-top: 50px;
+}
+
+.main-body-color {
+  background: #95a5a6;
+  height: 500px;
+  width: 900px;
+  padding-top: 40px;
+}
+
+/* icon control */
+
+.icon-control {
+  position: absolute;
+  left: 10px;
+  bottom: 15px;
+}
+
+/* nav style */
+
+.nav-control {
+  color: #fff;
+  /* transition: 0.8s; */
+}
+
+.nav-cntrol:hover {
+  color: rgb(153, 152, 152);
+  /* transition: 0.8s; */
+}
+
+/* end of nav style */
+
+/* form animations */
+
+.form {
+  width: 100%;
+  position: relative;
+  height: 100%;
+  overflow: hidden;
+  margin-top: 10px;
+}
+
+.form input {
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
+  padding-left: 40px;
+  padding-top: 40px;
+  padding-bottom: 10px;
+  border: none;
+  outline: none;
+}
+
+.form label {
+  position: absolute;
+  bottom: 0px;
+  left: 40px;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  border-bottom: 1px solid black;
+}
+
+.form label::after {
+  content: "";
+  position: absolute;
+  left: 0px;
+  bottom: -1px;
+  height: 100%;
+  width: 100%;
+  border-bottom: 3px solid #6a8fdd;
+  transform: translate(-150%);
+  transition: transform 0.3s ease;
+}
+
+.content-text {
+  position: absolute;
+  bottom: 5px;
+  left: 0px;
+  transition: all 0.3s ease;
+}
+
+.form input:focus+.label-name .content-text, .form input:valid+.label-name .content-text {
+  transform: translateY(-150%);
+  font-size: 15px;
+  color: #3961CF;
+}
+
+.form input:focus+.label-name::after, .form input:valid+.label-name::after {
+  transform: translateX(0%);
+}
+
+/* index style sheet */
+
+.index-section-b {
+  margin-top: 200px;
+}
+
+/* end of section b */
+
+/* section c */
+
+#section-c {
+  margin-top: 30px;
+}
+
+/* button css */
+
+.btn {
+  border: 1px solid #2c3e50;
+  background: none;
+  margin: 10px;
+  width: 150px;
+  font-size: 20px;
+  padding: 15px 10px;
+  transition: 0.8s;
+  position: relative;
+  overflow: hidden;
+  color: black;
+}
+
+.button-control {
+  color: #2c3e50;
+}
+
+.button-control:hover {
+  color: #2c3e50;
+}
+
+.button {
+  background: #2c3e50;
+  color: white;
+  border: none;
+  position: relative;
+  height: 60px;
+  width: 200px;
+  padding: 0 2em;
+  transition: 800ms ease all;
+  outline: none;
+}
+
+.button:hover {
+  background: #fff;
+  color: #2c3e50;
+}
+
+.button:before, button:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 2px;
+  width: 0;
+  background: #2c3e50;
+  transition: 400ms ease all;
+}
+
+.button:after {
+  right: inherit;
+  top: inherit;
+  left: 0;
+  bottom: 0;
+}
+
+button:hover:before, button:hover:after {
+  width: 100%;
+  transition: 800ms ease all;
+}
+
+#section-c .link-control {
+  padding-bottom: 20px;
+}
+
+/* controls links without a button */
+
+.link-control {
+  margin-top: 10px;
+}
+
+.link-control a {
+  color: #3961CF;
+  text-decoration: none;
+}
+
+.link-control a:hover {
+  color: white;
+}
+
+/* end of section c */
+
+.letssee {
+  border: 1px solid red;
+}
+
+/* media query */
