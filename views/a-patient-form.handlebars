@@ -49,12 +49,12 @@
 
             <div class="form col-xs-12">
 
+                <label for="select-doctor">Select a doctor</label>
                 <select class="form-control" id="select-doctor">
-                    <label for="select-doctor">Select a doctor</label>
-                    <option>Select a doctor</option>
-                    <option id="1" name="Eric Vargas">Eric Vargas (Cardiologist)</option>
-                    <option id="2" name="Ron Erlih">Ron Erlih (Brain Surgeon)</option>
-                    <option id="3" name="Tony Ho">Tony Ho (Neurologist)</option>
+                    {{#each doctors}}
+                        <option data-id="{{this.id}}">{{this.fullname}} ({{this.discipline}})
+                        </option>
+                    {{/each}}
                 </select>
             </div>
 
