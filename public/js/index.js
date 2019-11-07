@@ -6,6 +6,7 @@ var $apptLastName = $("#appt-lastname");
 var $apptEmail = $("#appt-email");
 var $apptPhone = $("#appt-phone");
 var $doctor = $("#select-doctor");
+// var $doctorId = $(".doctor-id");
 var $insuranceProvider = $("#insurance-provider");
 var $groupID = $("#group-id");
 var $visitPurpose = $("#visit-purpose");
@@ -79,7 +80,6 @@ var API = {
 // refresh patient list
 var refreshPatients = function() {
   API.getPatients().then(function(data) {
-    console.log('bfr populate')
     var $patients = data.map(function(patient) {  
       var $a = $("<a>")
         .text(patient.firstname + " " + patient.lastname)
@@ -100,40 +100,10 @@ var refreshPatients = function() {
 
       return $li;
     });
-    console.log('empty')
     $patientList.empty();
     $patientList.append($patients);
   });
 };
-
-// refreshAppointments gets new appointments from the db and repopulates the list
-// var refreshAppointments = function() {
-//   API.getAppointments().then(function(data) {
-//     var $appointments = data.map(function(appointment) {
-//       var $a = $("<a>")
-//         .text(appointment.visit_purpose)
-//         .attr("href", "/appointment/" + appointment.id);
-
-//       var $li = $("<li>")
-//         .attr({
-//           class: "list-group-item",
-//           "data-id": appointment.id
-//         })
-//         .append($a);
-
-//       var $button = $("<button>")
-//         .addClass("btn btn-danger float-right confirm")
-//         .text("Confirm");
-
-//       $li.append($button);
-
-//       return $li;
-//     });
-
-//     $appointmentList.empty();
-//     $appointmentList.append($appointments);
-//   });
-// };
 
 // ADD APPOINTMENT ======
 
@@ -151,6 +121,7 @@ var handleApptFormSubmit = function(event) {
     appointment_time: $appointmentTime.val().trim(),
     visit_purpose: $visitPurpose.val().trim(),
     doctor: $doctor.val().trim(),
+    DoctorId: $('.form-control option:selected').attr('data-id'),
     insurance_provider: $insuranceProvider.val().trim(),
     insurance_groupid: $groupID.val().trim(),
     status: "New"
@@ -163,7 +134,9 @@ var handleApptFormSubmit = function(event) {
 
   API.saveAppointment(appointment).then(function() {
     console.log("Appointment saved.");
+    console.log($doctorId);
   });
+
 
   $apptFirstName.val("");
   $apptLastName.val("");
@@ -230,9 +203,40 @@ $submitPatientBtn.on("click", handlePatientFormSubmit);
 $submitApptBtn.on("click", handleApptFormSubmit);
 $patientList.on("click", ".delete", handleDeleteBtnClick);
 
+// FOR THE DROPDOWN MENU IN THE APPOINTMENT FORM =====
 
   $(".doctor-appts").click(function() {
       doctorID = $(this).attr("data-id");
       window.location.assign(`/doctor/appts/${doctorID}`);
   });
 
+  // FOR REFRESHING APPOINTMENT LISTS 
+
+// refreshAppointments gets new appointments from the db and repopulates the list
+// var refreshAppointments = function() {
+//   API.getAppointments().then(function(data) {
+//     var $appointments = data.map(function(appointment) {
+//       var $a = $("<a>")
+//         .text(appointment.visit_purpose)
+//         .attr("href", "/appointment/" + appointment.id);
+
+//       var $li = $("<li>")
+//         .attr({
+//           class: "list-group-item",
+//           "data-id": appointment.id
+//         })
+//         .append($a);
+
+//       var $button = $("<button>")
+//         .addClass("btn btn-danger float-right confirm")
+//         .text("Confirm");
+
+//       $li.append($button);
+
+//       return $li;
+//     });
+
+//     $appointmentList.empty();
+//     $appointmentList.append($appointments);
+//   });
+// };

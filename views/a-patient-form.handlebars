@@ -52,7 +52,7 @@
                 <label for="select-doctor">Select a doctor</label>
                 <select class="form-control" id="select-doctor">
                     {{#each doctors}}
-                        <option data-id="{{this.id}}">{{this.fullname}} ({{this.discipline}})
+                        <option class="doctor-id" data-id="{{this.id}}">{{this.fullname}} ({{this.discipline}})
                         </option>
                     {{/each}}
                 </select>
