@@ -1,21 +1,41 @@
 <div class="container">
 
-{{!-- navbar with home icon, etc. --}}
-    <div class="row navbar">
-        <div class="col-md-3">
-            <a href="/"><i class="fas fa-home" style="font-size:2rem"></i></a>
-        </div>
-    </div>
-{{!-- appointa image --}}
+    {{!-- navbar with home icon, etc. --}}
+
+    {{!-- appointa image --}}
     <div class="row">
-        <div class="col-md-12 text-center logo-control">
-            <img src="/img/logopic.png" style="width:200px" alt="logo">
+        <div class="col-md-12 text-center">
+            <img src="/img/logopic.png" alt="logo">
         </div>
     </div>
+
+
+
+
 </div>
 
-<h3>PATIENT PROFILE HERE</h3>
 
+{{!-- profile view --}}
+
+<div class="container patient-doctor-dropdowns">
+    <div class="row">
+        <div class="col-md-12 d-flex justify-content-center">
+            <h3 class="title-control text-center "> Profile</h3>
+        </div>
+    </div>
+    
+    <ul id="patient-list" class="list-group section-b-control">
+        {{#each patients}}
+        <a href="patient/dashboard/{{this.id}}">
+            <li data-id="{{this.id}}" class="list-group-item data-list">
+
+                <button class="button button-control"> {{this.firstname}} {{this.lastname}}</button>
+
+        </a>
+        <button class="btn btn-danger float-right button button-control"><i class="fas fa-trash-alt"></i></button>
+        </li>
+        {{/each}}
+    </ul>
 </div>
 
 

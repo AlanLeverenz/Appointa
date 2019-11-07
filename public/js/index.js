@@ -82,7 +82,7 @@ var refreshPatients = function() {
     console.log('bfr populate')
     var $patients = data.map(function(patient) {  
       var $a = $("<a>")
-        .text(patient.firstname + ' ' + patient.lastname)
+        .text(patient.firstname + " " + patient.lastname)
         .attr("href", "/patient/" + patient.id);
 
       var $li = $("<li>")
