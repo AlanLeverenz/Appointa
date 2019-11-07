@@ -20,8 +20,8 @@
             <h5>{{msg}}</h5>
             <ul id="doctor-list" class="list-group">
                 {{#each doctors}}
-                    <li data-id="{{this.id}}" class="list-group-item"><a href="doctor/appts/{{this.id}}">{{this.fullname}} ({{this.discipline}})</a>
-                        <button class="btn btn-primary float-right list-appts"><i class="fas fa-clipboard-list"></i></button>
+                    <li data-id="{{this.id}}" class="list-group-item"><a href="doctor/{{this.id}}">{{this.fullname}} ({{this.discipline}})</a>
+                        <button data-id="{{this.id}}" class="btn btn-primary float-right doctor-appts"><i class="fas fa-clipboard-list"></i></button>
                     </li>
                 {{/each}}
             </ul>

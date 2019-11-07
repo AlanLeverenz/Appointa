@@ -19,13 +19,13 @@
 <div class="container request-form mt-3">
     <form>
         <div class="form-group">
-            <label for="patient-firstname">First name</label>
-            <input type="text" class="form-control" id="patient-firstname" placeholder="first name">
+            <label for="appt-firstname">First name</label>
+            <input type="text" class="form-control" id="appt-firstname" placeholder="first name">
         </div>
 
         <div class="form-group">
-            <label for="patient-lastname">Last name</label>
-            <input type="text" class="form-control" id="patient-lastname" placeholder="last name">
+            <label for="appt-lastname">Last name</label>
+            <input type="text" class="form-control" id="appt-lastname" placeholder="last name">
         </div>
 
         <div class="form-group">
@@ -37,11 +37,17 @@
             <label for="select-doctor">Select a doctor</label>
             <select class="form-control" id="select-doctor">
                 <option> -- Select a doctor -- </option>
-                <option id="1" name="Eric Vargas">Eric Vargas (Cardiologist)</option>
+                {{#each doctors}}
+                    <option data-id="{{this.id}}">{{this.fullname}} ({{this.discipline}})
+                    </option>
+                {{/each}}
+                {{!-- <option id="1" name="Eric Vargas">Eric Vargas (Cardiologist)</option>
                 <option id="2" name="Ron Erlih">Ron Erlih (Brain Surgeon)</option>
-                <option id="3" name="Tony Ho">Tony Ho (Neurologist)</option>
+                <option id="3" name="Tony Ho">Tony Ho (Neurologist)</option> --}}
             </select>
         </div>
+
+
 
         <div class="form-group">
             <label for="date">Date</label>
@@ -54,13 +60,13 @@
         </div>
 
         <div class="form-group">
-            <label for="email">Email</label>
-            <input type="text" class="form-control" id="patient-email" placeholder="email">
+            <label for="appt-email">Email</label>
+            <input type="text" class="form-control" id="appt-email" placeholder="email">
         </div>
 
         <div class="form-group">
-            <label for="phone">Phone</label>
-            <input type="text" class="form-control" id="patient-phone" placeholder="phone">
+            <label for="appt-phone">Phone</label>
+            <input type="text" class="form-control" id="appt-phone" placeholder="phone">
         </div>
 
         <div class="form-group">
@@ -72,8 +78,9 @@
             <label for="group-id">Insurance Group ID</label>
             <input type="text" class="form-control" id="group-id" placeholder="insurance group id">
         </div>
-        
-        <button type="submit" action="POST" id="request-form" class="btn btn-primary">Submit</button>
+
+        <button id="submit-appt" class="btn btn-primary float-right">Submit</button>
+
     </form>
 
 </div>
