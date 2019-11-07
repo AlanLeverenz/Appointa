@@ -50,23 +50,28 @@ input {
 /* unvisited link */
 
 a:link {
-  color: white;
+  color: black;
   text-decoration: none;
 }
 
 /* visited link */
 
 a:visited {
-  color: white;
+  color: black;
 }
 
 /* mouse over link */
 
 a:hover {
-  color: white;
+  color: black;
 }
 
 /* section b */
+
+.list-group-item {
+  height: 100px;
+  background: none;
+}
 
 .section-b-control {
   margin-top: 30px;
@@ -74,6 +79,7 @@ a:hover {
   border: 1px solid black;
   padding: 50px;
   min-height: 500px;
+  z-index: -1;
 }
 
 .form-style {
@@ -214,6 +220,7 @@ a:hover {
 
 .button-control {
   color: #2c3e50;
+  display: inline;
 }
 
 .button-control:hover {
