@@ -15,15 +15,19 @@
                 <h3 class="title-control text-center ">Appointment List</h3>
             </div>
         </div>
-        <div>
-            <ul id="appointment-list" class="list-group">
-                {{#each appointments}}
-                <option data-id="{{this.id}}" class="list-group-item">
-                    <a href="appointment/{{this.id}}">{{this.status}} - {{this.appointment_date}}, {{this.appointment_time}} - {{this.firstname}} {{this.lastname}} ({{this.visit_purpose}})</a><button class="btn btn-primary float-right confirm"><i class="fas fa-check-square"></i></button>
-                </option>
-                {{/each}}
-            </ul>
-        </div>
+
+        <ul id="appointment-list" class="list-group section-b-control">
+            {{#each appointments}}
+            <a href="appointment/{{this.id}}">
+            <option data-id="{{this.id}}" class="list-group-item">
+
+                <button class="button button-control">{{this.status}} - {{this.firstname}}
+                {{this.lastname}}</button></a>
+                <button class="btn btn-primary float-right confirm"><i
+                        class="fas fa-check-square"></i></button>
+            </option>
+            {{/each}}
+        </ul>
     </div>
 </div>
 

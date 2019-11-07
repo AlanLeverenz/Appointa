@@ -10,35 +10,50 @@
     </div>
 
 
-
-
-</div>
-
-
-{{!-- profile view --}}
-
-<div class="container patient-doctor-dropdowns">
-    <div class="row">
-        <div class="col-md-12 d-flex justify-content-center">
-            <h3 class="title-control text-center "> Profile</h3>
+    <div class="container patient-doctor-dropdowns">
+        <div class="row row-control">
+            <div class="col-md-12 d-flex justify-content-center">
+                <h3 class="title-control text-center"> Profile</h3>
+            </div>
         </div>
+
+
+
+
+        {{!-- profile view --}}
+        <div class="row">
+            <div class="col-md-4">
+                <a href="/patient/form"><button class="btn btn-primary button button-control"><span><i
+                                class="far fa-calendar-plus"></i></span>
+                        Appointment</button></a>
+            </div>
+            <div class="col-md-4">
+                <a href="/patient/appts/:id"><button class="btn btn-primary button button-control"><span><i
+                                class="fas fa-eye"></i></span> Appointment</button></a>
+            </div>
+            <div class="col-md-4">
+                <a href="/patient/:id"><button class="btn btn-primary button button-control"><span><i
+                                class="fas fa-user">
+                            </i></span> Profile</button></a>
+            </div>
+        </div>
+
+
+
+        <ul id="patient-list" class="list-group section-b-control">
+            {{#each patients}}
+            <a href="patient/dashboard/{{this.id}}">
+                <li data-id="{{this.id}}" class="list-group-item data-list">
+
+                    <button class="button button-control"> {{this.firstname}} {{this.lastname}}</button>
+
+            </a>
+            <button class="btn btn-danger float-right button button-control"><i class="fas fa-trash-alt"></i></button>
+            </li>
+            {{/each}}
+        </ul>
     </div>
-    
-    <ul id="patient-list" class="list-group section-b-control">
-        {{#each patients}}
-        <a href="patient/dashboard/{{this.id}}">
-            <li data-id="{{this.id}}" class="list-group-item data-list">
-
-                <button class="button button-control"> {{this.firstname}} {{this.lastname}}</button>
-
-        </a>
-        <button class="btn btn-danger float-right button button-control"><i class="fas fa-trash-alt"></i></button>
-        </li>
-        {{/each}}
-    </ul>
 </div>
-
-
 
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js">
 </script>

@@ -2,7 +2,7 @@
 
 body {
   overflow-x: hidden;
-  background: url('../img/2_files/4.jpg')
+  background: url('../img/2_files/4.jpg') no-repeat center center fixed;
 }
 
 p {
@@ -32,6 +32,10 @@ input {
 
 .logo-control {
   margin-top: 50px;
+}
+
+.row-control {
+  margin-top: 150px;
 }
 
 .title-control {
@@ -69,21 +73,21 @@ a:hover {
   background: #ecf0f18e;
   border: 1px solid black;
   padding: 50px;
-  height: 500px;
-  
+  min-height: 500px;
 }
 
 .form-style {
   background: #ecf0f1;
   padding: 50px;
   height: 100%;
+  margin-top: 40px;
 }
 
 .form-choice-control {
   height: 100px;
   width: 100%;
   padding: 10px;
-  background: black;  
+  background: black;
 }
 
 .form-header {
