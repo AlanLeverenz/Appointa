@@ -24,24 +24,12 @@ module.exports = function(sequelize, DataTypes) {
         },
         phone: { 
           type: DataTypes.STRING,
-          allowNull: false,
-          validate: {
-            len: [1]
-          }
         },
         appointment_date: { 
           type: DataTypes.STRING,
-          allowNull: false,
-          validate: {
-            len: [1]
-          }
         },
         appointment_time: { 
           type: DataTypes.TIME,
-          allowNull: false,
-          validate: {
-            len: [1]
-          }
         },
         visit_purpose: { 
           type: DataTypes.STRING,
@@ -52,10 +40,6 @@ module.exports = function(sequelize, DataTypes) {
         },
         doctor: { 
           type: DataTypes.STRING,
-          allowNull: false,
-          validate: {
-            len: [1]
-          }
         },
         insurance_provider: { 
           type: DataTypes.STRING,
@@ -100,18 +84,16 @@ module.exports = function(sequelize, DataTypes) {
     Appointment.associate = function(models) {
       Appointment.belongsTo(models.Patient, {
         foreignKey: {
-          allowNull: false
+          allowNull: true
         }
       });
-    };
-
-    Appointment.associate = function(models) {
       Appointment.belongsTo(models.Doctor, {
         foreignKey: {
-          allowNull: false,
+          allowNull: true,
             constraints: false
         }
       });
     };
+    
     return Appointment;
   };

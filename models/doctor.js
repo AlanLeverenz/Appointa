@@ -41,20 +41,12 @@ module.exports = function(sequelize, DataTypes) {
     });
 
     Doctor.associate = function(models) {
-        Doctor.hasMany(models.Appointment, {
-          foreignKey: {
-            allowNull: false
-          }
-        });
-      };
-
-      Doctor.associate = function(models) {
         Doctor.hasMany(models.Patient, {
           foreignKey: {
-            allowNull: false
+            allowNull: true
           }
         });
-      };
+    }
 
     return Doctor;
   };

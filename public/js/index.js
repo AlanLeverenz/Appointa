@@ -1,26 +1,26 @@
 // Get references to page elements
+
+// Appointments
+var $apptFirstName = $("#appt-firstname");
+var $apptLastName = $("#appt-lastname");
+var $apptEmail = $("#appt-email");
+var $apptPhone = $("#appt-phone");
+var $doctor = $("#select-doctor");
+var $insuranceProvider = $("#insurance-provider");
+var $groupID = $("#group-id");
+var $visitPurpose = $("#visit-purpose");
+var $appointmentDate = $("#appt-date");
+var $appointmentTime = $("#appt-time");
+var $appointmentStatus = '';
+var $submitApptBtn = $("#submit-appt");
+var $appointmentList = $("#appointment-list");
+
+// Patients
 var $patientFirstName = $("#patient-firstname");
 var $patientLastName = $("#patient-lastname");
 var $patientEmail = $("#patient-email");
-// var $visitPurpose = $("#visit-purpose");
-// var $appointmentDate = $("#appointment-date");
-// var $appointmentTime = $("#appointment-time");
-// var $appointmentStatus = $("#appointment-status");
-var $submitBtn = $("#submit");
-// var $appointmentList = $("#appointment-list");
+var $submitPatientBtn = $("#submit-patient");
 var $patientList = $("#patient-list");
-
-// DROPPED IN CODE FOR SELECTING FROM A LIST
-   // select category
-  //  $(".dropdown-menu a").click(function() {
-  //   // get category text and index from click event
-  //   catText = $(this).text();
-  //   catIndex = $(this).attr("id");
-  //   // write pulldown text and array index to #current-category and #user-select attribute
-  //   $("#current-category").html("<h4 id='user-select'>" + catText + "</h4>");
-  //   $("#user-select").attr("cat-index",catIndex);
-  //  });
-// END
 
 // The API object contains methods for each kind of request we'll make
 var API = {
@@ -30,23 +30,29 @@ var API = {
         "Content-Type": "application/json"
       },
       type: "POST",
-      url: "api/patient",
+      url: "/api/patients",
       data: JSON.stringify(patient)
     });
   },
-  // saveAppointment: function(appointment) {
-  //   return $.ajax({
-  //     headers: {
-  //       "Content-Type": "application/json"
-  //     },
-  //     type: "POST",
-  //     url: "api/appointments",
-  //     data: JSON.stringify(appointment)
-  //   });
-  // },
+  saveAppointment: function(appointment) {
+    return $.ajax({
+      headers: {
+        "Content-Type": "application/json"
+      },
+      type: "POST",
+      url: "api/appointments",
+      data: JSON.stringify(appointment)
+    });
+  },
   getAppointments: function() {
     return $.ajax({
       url: "api/appointments",
+      type: "GET"
+    });
+  },
+  getPatients: function() {
+    return $.ajax({
+      url: "api/patients",
       type: "GET"
     });
   },
@@ -61,13 +67,20 @@ var API = {
       url: "api/appointments/cancel/" + id,
       type: "UPDATE"
     });
+  },
+  deletePatient: function(id) {
+    return $.ajax({
+      url: "api/patient/" + id,
+      type: "DELETE"
+    });
   }
 };
 
 // refresh patient list
 var refreshPatients = function() {
   API.getPatients().then(function(data) {
-    var $patients = data.map(function(patient) {
+    console.log('bfr populate')
+    var $patients = data.map(function(patient) {  
       var $a = $("<a>")
         .text(patient.firstname + ' ' + patient.lastname)
         .attr("href", "/patient/" + patient.id);
@@ -83,23 +96,22 @@ var refreshPatients = function() {
         .addClass("btn btn-danger float-right delete")
         .html('<i class="fas fa-trash-alt"></i>');
 
-      $li.patient($button);
+      $li.append($button);
 
       return $li;
     });
-
+    console.log('empty')
     $patientList.empty();
     $patientList.append($patients);
   });
 };
-
 
 // refreshAppointments gets new appointments from the db and repopulates the list
 // var refreshAppointments = function() {
 //   API.getAppointments().then(function(data) {
 //     var $appointments = data.map(function(appointment) {
 //       var $a = $("<a>")
-//         .text(appointment.patient_request)
+//         .text(appointment.visit_purpose)
 //         .attr("href", "/appointment/" + appointment.id);
 
 //       var $li = $("<li>")
@@ -113,7 +125,7 @@ var refreshPatients = function() {
 //         .addClass("btn btn-danger float-right confirm")
 //         .text("Confirm");
 
-//       $li.appointment($button);
+//       $li.append($button);
 
 //       return $li;
 //     });
@@ -123,26 +135,70 @@ var refreshPatients = function() {
 //   });
 // };
 
-// handleFormSubmit is called whenever we submit a new appointment
-// Save the new appointment to the db and refresh the list
-var handleFormSubmit = function(event) {
+// ADD APPOINTMENT ======
+
+// handleApptFormSubmit is called when submitting a new appointment
+
+var handleApptFormSubmit = function(event) {
+  event.preventDefault();
+
+  var appointment = {
+    firstname: $apptFirstName.val().trim(),
+    lastname: $apptLastName.val().trim(),
+    email: $apptEmail.val().trim(),
+    phone: $apptPhone.val().trim(),
+    appointment_date: $appointmentDate.val().trim(),
+    appointment_time: $appointmentTime.val().trim(),
+    visit_purpose: $visitPurpose.val().trim(),
+    doctor: $doctor.val().trim(),
+    insurance_provider: $insuranceProvider.val().trim(),
+    insurance_groupid: $groupID.val().trim(),
+    status: "New"
+  };
+
+  if (!(appointment.firstname && appointment.lastname && appointment.email && appointment.visit_purpose)) {
+    alert("You must enter your name, email, and a purpose for your visit!");
+    return;
+  }
+
+  API.saveAppointment(appointment).then(function() {
+    console.log("Appointment saved.");
+  });
+
+  $apptFirstName.val("");
+  $apptLastName.val("");
+  $apptEmail.val("");
+  $apptPhone.val("");
+  $doctor.val("");
+  $insuranceProvider.val("");
+  $groupID.val("");
+  $visitPurpose.val("");
+  $appointmentDate.val("");
+  $appointmentTime.val("");
+};
+
+// ADD PATIENT ======
+
+// handlePatientFormSubmit is called when submitting a new patient
+// refresh the list of patients
+
+var handlePatientFormSubmit = function(event) {
   event.preventDefault();
 
   var patient = {
     firstname: $patientFirstName.val().trim(),
     lastname: $patientLastName.val().trim(),
-    email: $patientEmail.val().trim()
+    email: $patientEmail.val().trim(),
   };
 
   if (!(patient.firstname && patient.lastname && patient.email)) {
-    alert("You must enter your name and email! ... I'm not shouting.");
+    alert("You must enter your name and email!");
     return;
   }
 
   API.savePatient(patient).then(function() {
-    console.log("Patient saved (we'll see).");
-    // Here is where the function for email notifications should be inserted.
-    // refreshAppointments();
+    console.log("Patient saved.");
+    refreshPatients();
   });
 
   $patientFirstName.val("");
@@ -150,18 +206,33 @@ var handleFormSubmit = function(event) {
   $patientEmail.val("");
 };
 
-// handleConfirmBtnClick is called when an appointment's Confirm button is clicked
-// Update the appointment from the db and refresh the list
-// var handleConfirmBtnClick = function() {
-//   var idToConfirm = $(this)
-//     .parent()
-//     .attr("data-id");
+// DELETE PATIENT ====
 
-//   API.confirmExample(idToConfirm).then(function() {
-//     refreshAppointments();
-//   });
-// };
+// handleDeleteBtnClick is called when an appointment's Confirm button is clicked
+// Remove the patient from the db and refresh the list
 
-// // Add event listeners to the submit and delete buttons
-// $submitBtn.on("click", handleFormSubmit);
-// $appointmentList.on("click", ".confirm", handleConfirmBtnClick);
+var handleDeleteBtnClick = function() {
+  var idToDelete = $(this)
+    .parent()
+    .attr("data-id");
+
+  API.deletePatient(idToDelete).then(function() {
+    refreshPatients(); 
+    console.log("patient deleted")
+  });
+};
+
+// EVENT LISTENERS =====
+
+// Add event listeners to the submit appt, submit patient, and the delete button to delete a patient
+
+$submitPatientBtn.on("click", handlePatientFormSubmit);
+$submitApptBtn.on("click", handleApptFormSubmit);
+$patientList.on("click", ".delete", handleDeleteBtnClick);
+
+
+  $(".doctor-appts").click(function() {
+      doctorID = $(this).attr("data-id");
+      window.location.assign(`/doctor/appts/${doctorID}`);
+  });
+
