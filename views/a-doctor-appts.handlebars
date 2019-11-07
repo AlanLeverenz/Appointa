@@ -21,8 +21,7 @@
             <a href="appointment/{{this.id}}">
             <option data-id="{{this.id}}" class="list-group-item">
 
-                <button class="button button-control">{{this.status}} - {{this.firstname}}
-                {{this.lastname}}</button></a>
+                <button class="button button-control">{{this.status}} - {{this.appointment_date}}, {{this.appointment_time}} - {{this.firstname}} {{this.lastname}} ({{this.visit_purpose}})</button></a>
                 <button class="btn btn-primary float-right confirm"><i
                         class="fas fa-check-square"></i></button>
             </option>
