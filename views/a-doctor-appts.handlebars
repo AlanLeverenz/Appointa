@@ -15,17 +15,31 @@
                 <h3 class="title-control text-center ">Appointment List</h3>
             </div>
         </div>
-        <ul id="appointment-list" class="list-group">
+
+        <ul id="appointment-list" class="list-group section-b-control">
             {{#each appointments}}
-            <option data-id="{{this.id}}" class="list-group-item">
-                <a href="appointment/{{this.id}}">{{this.status}} - {{this.firstname}}
-                    {{this.lastname}}</a><button class="btn btn-primary float-right confirm"><i
+            <a href="appointment/{{this.id}}">
+
+
+                <li data-id="{{this.id}}" class="list-group-item data-list">
+
+
+                    {{this.status}} - {{this.appointment_date}}, {{this.appointment_time}} - {{this.firstname}}
+                    {{this.lastname}} ({{this.visit_purpose}})
+            </a>
+
+            <a href="appointment/{{this.id}}">
+                <button class="btn btn-primary button button-control float-right confirm"><i
                         class="fas fa-check-square"></i></button>
-            </option>
+            </a>
+
+
+            </li>
+
             {{/each}}
+
         </ul>
     </div>
-</div>
 </div>
 
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js">

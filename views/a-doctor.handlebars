@@ -16,11 +16,14 @@
                 <h3 class="title-control text-center ">{{msg}}</h3>
             </div>
         </div>
-        <ul id="doctor-list" class="list-group">
+        <ul id="doctor-list" class="list-group section-b-control">
             {{#each doctors}}
-            <li data-id="{{this.id}}" class="list-group-item data-list"><a
-                    href="doctor/appts/{{this.id}}">{{this.fullname}} ({{this.discipline}})</a>
-                <button data-id="{{this.id}}" class="btn btn-primary float-right doctor-appts"><i class="fas fa-clipboard-list"></i></button>
+            <a href="doctor/appts/{{this.id}}">
+            <li data-id="{{this.id}}" class="list-group-item data-list">
+                <button class="button button-control">
+                    {{this.fullname}} ({{this.discipline}})</button></a>
+                <button data-id="{{this.id}}" class="btn btn-primary button button-control float-right doctor-appts"><i
+                        class="fas fa-clipboard-list"></i></button>
             </li>
             {{/each}}
         </ul>

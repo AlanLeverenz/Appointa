@@ -12,9 +12,31 @@
 
 
     <div class="container">
-        <section id="section-b" class="form-style">
 
-            <h2 class="text-center form-header">Create your Appointment</h2>
+        <div class="row row-control">
+            <div class="col-md-12 d-flex justify-content-center">
+                <h3 class="title-control text-center"> Create Appointment</h3>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4">
+                <a href="/patient/form"><button class="btn btn-primary button button-control"><span><i
+                                class="far fa-calendar-plus"></i></span>
+                        Appointment</button></a>
+            </div>
+            <div class="col-md-4">
+                <a href="/patient/appts/:id"><button class="btn btn-primary button button-control"><span><i
+                                class="fas fa-eye"></i></span> Appointment</button></a>
+            </div>
+            <div class="col-md-4">
+                <a href="/patient/:id"><button class="btn btn-primary button button-control"><span><i
+                                class="fas fa-user">
+                            </i></span> Profile</button></a>
+            </div>
+        </div>
+
+        <section id="section-b" class="form-style">
 
             <form>
                 <div class="form col-xs-12">
@@ -52,7 +74,7 @@
                 <label for="select-doctor">Select a doctor</label>
                 <select class="form-control" id="select-doctor">
                     {{#each doctors}}
-                        <option data-id="{{this.id}}">{{this.fullname}} ({{this.discipline}})
+                        <option class="doctor-id" data-id="{{this.id}}">{{this.fullname}} ({{this.discipline}})
                         </option>
                     {{/each}}
                 </select>

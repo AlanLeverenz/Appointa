@@ -2,7 +2,7 @@
 
 body {
   overflow-x: hidden;
-  background: url('../img/2_files/4.jpg')
+  background: url('../img/2_files/4.jpg') no-repeat center center fixed;
 }
 
 p {
@@ -34,6 +34,10 @@ input {
   margin-top: 50px;
 }
 
+.row-control {
+  margin-top: 150px;
+}
+
 .title-control {
   width: 400px;
   margin-top: 100px;
@@ -46,44 +50,50 @@ input {
 /* unvisited link */
 
 a:link {
-  color: white;
+  color: black;
   text-decoration: none;
 }
 
 /* visited link */
 
 a:visited {
-  color: white;
+  color: black;
 }
 
 /* mouse over link */
 
 a:hover {
-  color: white;
+  color: black;
 }
 
 /* section b */
+
+.list-group-item {
+  height: 100px;
+  background: none;
+}
 
 .section-b-control {
   margin-top: 30px;
   background: #ecf0f18e;
   border: 1px solid black;
   padding: 50px;
-  height: 500px;
-  
+  min-height: 500px;
+  z-index: -1;
 }
 
 .form-style {
   background: #ecf0f1;
   padding: 50px;
   height: 100%;
+  margin-top: 40px;
 }
 
 .form-choice-control {
   height: 100px;
   width: 100%;
   padding: 10px;
-  background: black;  
+  background: black;
 }
 
 .form-header {
@@ -210,6 +220,7 @@ a:hover {
 
 .button-control {
   color: #2c3e50;
+  display: inline;
 }
 
 .button-control:hover {
