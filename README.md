@@ -1,5 +1,7 @@
 # Project 2 - <strong>Appointa</strong> November 2019
 
+![](public/img/appointa_logo.png)
+
 ## Links:
 - Deployment Link: @ Heroku https://project-aaar.herokuapp.com/
 - GitHub Resipository Link: https://github.com/AlanLeverenz/Appointa
