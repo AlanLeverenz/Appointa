@@ -1,4 +1,4 @@
-# Project 2 - <strong>Appointa</strong> November 2019
+# <strong>Appointa</strong>
 
 ![](public/img/appointa_logo.png)
 
